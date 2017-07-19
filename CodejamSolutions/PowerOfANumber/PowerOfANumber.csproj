@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{194A542F-A34A-47F2-8E06-62E8DDC71685}</ProjectGuid>
+    <ProjectGuid>{6D1886BB-9171-449F-A901-C070FF2732C8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MailingAddressDisplayConsole</RootNamespace>
-    <AssemblyName>MailingAddressDisplayConsole</AssemblyName>
+    <RootNamespace>PowerOfANumber</RootNamespace>
+    <AssemblyName>PowerOfANumber</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,19 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputFromConsole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InputValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SupportLibrary\SupportLibrary.csproj">
-      <Project>{d117f608-f436-4697-b83e-99dc002f76d8}</Project>
-      <Name>SupportLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

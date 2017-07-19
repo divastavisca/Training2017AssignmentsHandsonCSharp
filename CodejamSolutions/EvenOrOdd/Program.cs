@@ -21,15 +21,20 @@ namespace EvenOrOdd
                 if(Int64.TryParse(Console.ReadLine(),out inputNumber)&&inputNumber!=0)   //Check for valid input
                 {
                     brk = false;
-                    result = inputNumber % 2 == 0 ? "Entered number is even" : "Entered number is odd";   //Final result
+                    result = CheckForEvenOrOdd(inputNumber);   //Final result
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input");
                 }
             }
-            Console.WriteLine(result);   //Output
+            Console.WriteLine("Entered number is " + result);   //Output
             Console.ReadKey();
+        }
+
+        private static string CheckForEvenOrOdd(long inputNumber)
+        {
+            return inputNumber % 2 == 0 ? "even" : "odd";
         }
     }
 }

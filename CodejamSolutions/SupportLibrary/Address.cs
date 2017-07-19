@@ -27,7 +27,7 @@ namespace SupportLibrary
         /// Set House No
         /// </summary>
         /// <param name="hNo"></param>
-        public void SetHouseNo(string hNo)
+        public void SetHouseNumber(string hNo)
         {
             HouseNumber = hNo;
         }

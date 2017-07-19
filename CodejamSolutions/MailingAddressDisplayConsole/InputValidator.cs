@@ -23,7 +23,7 @@ namespace MailingAddressDisplayConsole
             int pnCode = 0;
             newUser.FirstName = GetInputString("Enter your first name");  //set firstname
             newUser.LastName = GetInputString("Enter your last name");    //set lastname
-            newUser.mailingAddress.SetHouseNo(newScanner.Read("Enter your house number"));   //Get House no
+            newUser.mailingAddress.SetHouseNumber(newScanner.Read("Enter your house number"));   //Get House no
             newUser.mailingAddress.SetStreet(GetInputString("Enter street"));   //set street
             newUser.mailingAddress.SetCity(GetInputString("Enter City"));     //set city
             brk = true;
