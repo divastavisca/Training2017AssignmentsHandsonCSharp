@@ -55,7 +55,11 @@ namespace SupportLibrary
         public bool TryParsePinCode(string pinCode,out int pin)
         {
             if (Int32.TryParse(pinCode, out pin))
-                return true;
+            {
+                if(pin.ToString().Length==6)
+                    return true;
+                return false;
+            }
             return false;
         }
     }
