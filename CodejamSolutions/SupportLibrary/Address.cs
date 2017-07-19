@@ -8,7 +8,7 @@ namespace SupportLibrary
 {
     public class Address
     {
-        private string HouseNo;
+        private string HouseNumber;
         private string Street;
         private string City;
         private int PinCode;
@@ -20,7 +20,7 @@ namespace SupportLibrary
         ///
         public override string ToString()
         { 
-            return (this.HouseNo + ", " + this.Street + ", " + this.City + ", " + this.PinCode);
+            return (this.HouseNumber + ", " + this.Street + ", " + this.City + ", " + this.PinCode);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace SupportLibrary
         /// <param name="hNo"></param>
         public void SetHouseNo(string hNo)
         {
-            HouseNo = hNo;
+            HouseNumber = hNo;
         }
 
         /// <summary>

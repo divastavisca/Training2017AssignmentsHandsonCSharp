@@ -9,7 +9,7 @@ namespace SupportLibrary
     /// <summary>
     /// Provides support for validating different user related information
     /// </summary>
-    public class ValidateCredentials
+    public class CredentialValidator
     {
         /// <summary>
         /// Validate whether the provided string is a valid gender name

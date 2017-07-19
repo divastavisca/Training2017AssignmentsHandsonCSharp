@@ -7,10 +7,10 @@ using SupportLibrary;
 
 namespace MailingAddressDisplayConsole
 {
-    public class ReturnValidInput
+    public class InputValidator
     {
         InputFromConsole newScanner = new InputFromConsole();          //Custom console object
-        ValidateCredentials newValidator = new ValidateCredentials();  //Custom validation object
+        CredentialValidator newValidator = new CredentialValidator();  //Custom validation object
         /// <summary>
         /// Gets valid input input and returns a User object
         /// </summary>
