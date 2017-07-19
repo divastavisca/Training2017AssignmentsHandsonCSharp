@@ -8,10 +8,10 @@ namespace SupportLibrary
 {
     public class Address
     {
-        public string HouseNo { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public int PinCode { get; set; }
+        private string HouseNo;
+        private string Street;
+        private string City;
+        private int PinCode;
 
         /// <summary>
         /// Get the complete mailing address

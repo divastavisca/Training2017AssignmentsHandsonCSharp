@@ -47,16 +47,16 @@ namespace SupportLibrary
         }
         
         /// <summary>
-        /// Tries parsing the string to a valid Pin code
+        /// Tries parsing the string to a valid Number of specific digits
         /// </summary>
         /// <param name="pinNumber"></param>
-        /// <param name="pin"></param>
+        /// <param name="finalNumber"></param>
         /// <returns></returns>
-        public bool TryParsePinCode(string pinCode,out int pin)
+        public bool TryParseNumber(string number,int digits,out int finalNumber)
         {
-            if (Int32.TryParse(pinCode, out pin))
+            if (Int32.TryParse(number, out finalNumber))
             {
-                if(pin.ToString().Length==6)
+                if(finalNumber.ToString().Length==digits)
                     return true;
                 return false;
             }
