@@ -13,22 +13,23 @@ namespace PowerOfANumber
     {
         public static void Main(string[] args)
         {
-            InputFromConsole Reader = new InputFromConsole();
-            string number = Reader.Read("Enter the number"),power;
-            long inputNumber,inputPower,finalResult=1;
+            InputFromConsole Reader = new InputFromConsole();   //Custom console object
+            string number, power;
+            long inputNumber=0,inputPower=0;
             bool brk = true;
-            while (brk)
+            while (brk)            //Gets a valid input number
             {
-                if (Int64.TryParse(number, out inputNumber))
+                number = Reader.Read("Enter the number");
+                if (Int64.TryParse(number, out inputNumber)&&inputNumber!=0)
                 {
                     brk = false;
                 }
                 else Console.WriteLine("Invalid Input");
             }
             brk = true;
-            power = Reader.Read("Enter the power");
-            while (brk)
+            while (brk)            //Gets a valid power
             {
+                power = Reader.Read("Enter the power");
                 if (Int64.TryParse(power, out inputPower))
                 {
                     brk = false;
@@ -36,32 +37,39 @@ namespace PowerOfANumber
                 else Console.WriteLine("Invalid Input");
             }
             if (inputPower <= 0)
-                Console.WriteLine("Power of ({0},{1}) is {2}", inputNumber, inputPower, Power<double>(inputNumber, inputPower));
-            else Console.WriteLine("Power of ({0},{1}) is {2}", inputNumber, inputPower, Power<int>(inputNumber, inputPower));
-            Console.WriteLine();
+                Console.WriteLine("Power of ({0},{1}) is {2}", inputNumber, inputPower, Power<double>(inputNumber, inputPower)); //if the power is negative, the output is defined by this
+            else Console.WriteLine("Power of ({0},{1}) is {2}", inputNumber, inputPower, Power<int>(inputNumber, inputPower));  //if the power is positive, the output is defined by this
+            Console.ReadKey();
         }
 
-        private T Power<T>(long inputNumber,long inputPower) 
+        /// <summary>
+        /// Returns the power of the inputNumber to the power inputPower
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="inputNumber"></param>
+        /// <param name="inputPower"></param>
+        /// <returns></returns>
+        private static T Power<T>(long inputNumber,long inputPower)     //Returns the power of the inputNumber to the power inputPower
         {
-            var ansDouble=1;
-            var ansInt=1;
-            if(inputPower<=0)
+            double ansDouble=1;
+            long ansInt=1;
+            if(inputPower<=0)    //if input power is negative
             {
                 while(inputPower<0)
                 {
                     ansDouble /= inputNumber;
                     inputPower++;
                 }
-                return ansDouble;
-            }
-            else
+                return (T)Convert.ChangeType(ansDouble,typeof(T));
+            } 
+            else                 //if input power is positive
             {
                 while(inputPower>0)
                 {
                     ansInt *= inputNumber;
                     inputPower--;
                 }
-                return ansInt;
+                return (T)Convert.ChangeType(ansInt,typeof(T));
             }
         }
     }

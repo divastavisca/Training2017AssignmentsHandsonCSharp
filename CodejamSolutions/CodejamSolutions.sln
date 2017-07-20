@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentInformationConsole",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvenOrOdd", "EvenOrOdd\EvenOrOdd.csproj", "{57628D50-D95F-4ECD-8792-EB7092D514BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerOfANumber", "PowerOfANumber\PowerOfANumber.csproj", "{6D1886BB-9171-449F-A901-C070FF2732C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{57628D50-D95F-4ECD-8792-EB7092D514BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57628D50-D95F-4ECD-8792-EB7092D514BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57628D50-D95F-4ECD-8792-EB7092D514BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D1886BB-9171-449F-A901-C070FF2732C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D1886BB-9171-449F-A901-C070FF2732C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D1886BB-9171-449F-A901-C070FF2732C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D1886BB-9171-449F-A901-C070FF2732C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
