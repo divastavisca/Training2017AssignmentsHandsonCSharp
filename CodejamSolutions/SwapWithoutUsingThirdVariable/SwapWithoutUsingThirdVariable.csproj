@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0DFA4C93-8A0E-487D-B77A-75DAF0892497}</ProjectGuid>
+    <ProjectGuid>{CF41E3A3-2559-4257-A21E-0C0E21AEA601}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PyramidPattern</RootNamespace>
-    <AssemblyName>PyramidPattern</AssemblyName>
+    <RootNamespace>SwapWithoutUsingThirdVariable</RootNamespace>
+    <AssemblyName>SwapWithoutUsingThirdVariable</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
