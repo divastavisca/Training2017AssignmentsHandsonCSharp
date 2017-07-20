@@ -23,9 +23,9 @@ namespace MailingAddressDisplayConsole
             int pnCode = 0;
             newUser.FirstName = GetInputString("Enter your first name");  //set firstname
             newUser.LastName = GetInputString("Enter your last name");    //set lastname
-            newUser.mailingAddress.SetHouseNumber(newScanner.Read("Enter your house number"));   //Get House no
-            newUser.mailingAddress.SetStreet(GetInputString("Enter street"));   //set street
-            newUser.mailingAddress.SetCity(GetInputString("Enter City"));     //set city
+            newUser.MailingAddress.SetHouseNumber(newScanner.Read("Enter your house number"));   //Get House no
+            newUser.MailingAddress.SetStreet(GetInputString("Enter street"));   //set street
+            newUser.MailingAddress.SetCity(GetInputString("Enter City"));     //set city
             brk = true;
             while (brk)  //Get pincode from console until gets a valid input
             {
@@ -34,7 +34,7 @@ namespace MailingAddressDisplayConsole
                 if (brk)
                     Console.WriteLine("Invalid");
             }
-            newUser.mailingAddress.SetPinCode(pnCode);   //set pincode
+            newUser.MailingAddress.SetPinCode(pnCode);   //set pincode
             return newUser;
         }
 
@@ -46,15 +46,15 @@ namespace MailingAddressDisplayConsole
         public string GetInputString(string query)
         {
             bool brk = true;
-            string InputString = "";
+            string inputString = "";
             while (brk)                        //Gets required input from console until it is not valid
             {
-                InputString = newScanner.Read(query);
-                brk = !newValidator.IsValidStringName(InputString);
+                inputString = newScanner.Read(query);
+                brk = !newValidator.IsValidStringName(inputString);
                 if (brk)
                     Console.WriteLine("Invalid");
             }
-            return InputString;
+            return inputString;
         }
     }
 }

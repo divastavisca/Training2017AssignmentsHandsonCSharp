@@ -16,9 +16,9 @@ namespace MailingAddressDisplayConsole
 
         public static void Main(string[] args)
         {
-            InputValidator ValidInput = new InputValidator();
-            User newUser = ValidInput.GetValidInput();
-            Console.WriteLine("\nUser's Address\n--------------\n"+newUser.mailingAddress);
+            InputValidator validInput = new InputValidator();
+            User newUser = validInput.GetValidInput();
+            Console.WriteLine("\nUser's Address\n--------------\n"+newUser.MailingAddress);
             Console.ReadKey();
         }
     }

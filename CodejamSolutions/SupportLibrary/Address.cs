@@ -8,10 +8,10 @@ namespace SupportLibrary
 {
     public class Address
     {
-        private string HouseNumber;
-        private string Street;
-        private string City;
-        private int PinCode;
+        private string house_number;
+        private string street;
+        private string city;
+        private int pin_code;
 
         /// <summary>
         /// Get the complete mailing address
@@ -20,7 +20,7 @@ namespace SupportLibrary
         ///
         public override string ToString()
         { 
-            return (this.HouseNumber + ", " + this.Street + ", " + this.City + ", " + this.PinCode);
+            return (this.house_number + ", " + this.street + ", " + this.city + ", " + this.pin_code);
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace SupportLibrary
         /// <param name="hNo"></param>
         public void SetHouseNumber(string hNo)
         {
-            HouseNumber = hNo;
+            house_number = hNo;
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace SupportLibrary
         /// <param name="street"></param>
         public void SetStreet(string street)
         {
-            Street = street;
+            this.street = street;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace SupportLibrary
         /// <param name="city"></param>
         public void SetCity(string city)
         {
-            City = city;
+            this.city = city;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace SupportLibrary
         /// <param name="pinCode"></param>
         public void SetPinCode(int pinCode)
         {
-            PinCode = pinCode;
+            pin_code = pinCode;
         }
     }
 }

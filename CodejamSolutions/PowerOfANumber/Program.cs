@@ -49,7 +49,7 @@ namespace PowerOfANumber
         /// <param name="inputNumber"></param>
         /// <param name="inputPower"></param>
         /// <returns></returns>
-        private static T Power<T>(long inputNumber,long inputPower)     //Returns the power of the inputNumber to the power inputPower
+        private static T Power<T>(long inputNumber,long inputPower)     //Returns the value of the inputNumber to the power inputPower
         {
             double ansDouble=1;
             long ansInt=1;

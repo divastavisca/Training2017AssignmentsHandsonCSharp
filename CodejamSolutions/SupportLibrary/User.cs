@@ -12,11 +12,11 @@ namespace SupportLibrary
     public class User : Person
     {
         public int GenderId { get; set; }
-        public Address mailingAddress; 
+        public Address MailingAddress; 
 
         public User() //Creates a new user instance
         {
-            mailingAddress = new Address();
+            MailingAddress = new Address();
         }
     }
 }
