@@ -11,9 +11,13 @@ namespace SupportLibrary
     /// </summary>
     public class User : Person
     {
-        public int GenderId { get; set; }
-        public Address MailingAddress; 
-
+        public enum Gender
+        {
+            Male,
+            Female
+        }
+        public Address MailingAddress { get; set; } 
+        
         public User() //Creates a new user instance
         {
             MailingAddress = new Address();

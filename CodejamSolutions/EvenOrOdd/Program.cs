@@ -14,14 +14,19 @@ namespace EvenOrOdd
         static InputFromConsole reader = new InputFromConsole();
         public static void Main(string[] args)
         {
-            long inputNumber=reader.ReadInt("Enter a number");
-            Console.WriteLine("Entered number is " + CheckForEvenOrOdd(inputNumber));   //Output
+            string output;
+            if (IsEven(reader.ReadInt("Enter a number")))
+            {
+                output = "Even";
+            }
+            else output = "Odd";
+            Console.WriteLine("Entered number is " + output );   //Output
             Console.ReadKey();
         }
 
-        private static string CheckForEvenOrOdd(long inputNumber)
+        private static bool IsEven(long inputNumber)
         {
-            return inputNumber % 2 == 0 ? "even" : "odd";
+            return inputNumber % 2 == 0 ? true : false;
         }
     }
 }

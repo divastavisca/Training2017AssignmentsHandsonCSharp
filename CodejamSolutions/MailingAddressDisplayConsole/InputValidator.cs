@@ -19,7 +19,7 @@ namespace MailingAddressDisplayConsole
         {
             User newUser = new User();
             bool brk = true;
-            string pinCode = "";
+            string pinCode;
             int pnCode = 0;
             newUser.FirstName = GetInputString("Enter your first name");  //set firstname
             newUser.LastName = GetInputString("Enter your last name");    //set lastname
@@ -46,7 +46,7 @@ namespace MailingAddressDisplayConsole
         public string GetInputString(string query)
         {
             bool brk = true;
-            string inputString = "";
+            string inputString=string.Empty;
             while (brk)                        //Gets required input from console until it is not valid
             {
                 inputString = newScanner.Read(query);

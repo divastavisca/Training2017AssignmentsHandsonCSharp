@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PyramidPattern", "PyramidPa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwapWithoutUsingThirdVariable", "SwapWithoutUsingThirdVariable\SwapWithoutUsingThirdVariable.csproj", "{CF41E3A3-2559-4257-A21E-0C0E21AEA601}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxEstimationConsole", "TaxEstimationConsole\TaxEstimationConsole.csproj", "{FB0B5754-793D-480C-A540-18E2882B979D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefrenceTypeAndValueType", "RefrenceTypeAndValueType\RefrenceTypeAndValueType.csproj", "{C7A35821-5F0D-4308-8E5B-9F5CB7D76F7C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{CF41E3A3-2559-4257-A21E-0C0E21AEA601}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF41E3A3-2559-4257-A21E-0C0E21AEA601}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF41E3A3-2559-4257-A21E-0C0E21AEA601}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB0B5754-793D-480C-A540-18E2882B979D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0B5754-793D-480C-A540-18E2882B979D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0B5754-793D-480C-A540-18E2882B979D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0B5754-793D-480C-A540-18E2882B979D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7A35821-5F0D-4308-8E5B-9F5CB7D76F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7A35821-5F0D-4308-8E5B-9F5CB7D76F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7A35821-5F0D-4308-8E5B-9F5CB7D76F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7A35821-5F0D-4308-8E5B-9F5CB7D76F7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
