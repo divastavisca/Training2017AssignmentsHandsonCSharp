@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHandlingAssignment", "FileHandlingAssignment\FileHandlingAssignment.csproj", "{D91BA9C1-AE30-4FA7-A79B-75E5230AA754}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportLibrary", "..\CodejamSolutions\SupportLibrary\SupportLibrary.csproj", "{D117F608-F436-4697-B83E-99DC002F76D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D91BA9C1-AE30-4FA7-A79B-75E5230AA754}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D91BA9C1-AE30-4FA7-A79B-75E5230AA754}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D91BA9C1-AE30-4FA7-A79B-75E5230AA754}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D117F608-F436-4697-B83E-99DC002F76D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D117F608-F436-4697-B83E-99DC002F76D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D117F608-F436-4697-B83E-99DC002F76D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D117F608-F436-4697-B83E-99DC002F76D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
