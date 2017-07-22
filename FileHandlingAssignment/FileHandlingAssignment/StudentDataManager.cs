@@ -12,7 +12,7 @@ namespace FileHandlingAssignment
 {
     public class StudentDataManager
     {
-       
+
         InputFromConsole reader = new InputFromConsole(); //Custom console
         /// <summary>
         /// Physical path of data resource directory
@@ -42,7 +42,7 @@ namespace FileHandlingAssignment
         /// <returns></returns>
         public bool StoreRecord(Student student)
         {
-            string fileName = path + student.FirstName + student.MobileNumber+".txt";
+            string fileName = path + student.FirstName + student.MobileNumber + ".txt";
             if (!File.Exists(fileName))
             {
                 using (File.Create(fileName))
@@ -60,8 +60,8 @@ namespace FileHandlingAssignment
                 StudentRecord record = new StudentRecord();
                 record.filename = fileName;
                 record.logTime = DateTime.UtcNow;
-                File.AppendAllText(path + "info.txt",record.ToString());
-                Logger.AddLog("New student record added "+record);
+                File.AppendAllText(path + "info.txt", record.ToString());
+                Logger.AddLog("New student record added " + record);
                 return true;
             }
             else
@@ -77,7 +77,7 @@ namespace FileHandlingAssignment
         /// <param name="student"></param>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public string GetJson(Student student,string fileName)
+        public string GetJson(Student student, string fileName)
         {
             return (DateTime.UtcNow.ToString() + " " + student.FirstName + " " + student.LastName + " " + student.MobileNumber + " " + student.EmailId + " " + fileName);
         }
@@ -109,8 +109,8 @@ namespace FileHandlingAssignment
         {
             Student newStudent = new Student();
             //Get valid input from console using regular expression validation
-           #region
-            try    
+            #region
+            try
             {
                 newStudent.FirstName = GetValidInput("Enter first name", "^[a-zA-Z]");
                 newStudent.LastName = GetValidInput("Enter last name", "[a-zA-Z]$");
@@ -137,7 +137,7 @@ namespace FileHandlingAssignment
         {
             string name = GetValidInput("Enter first name", "^[a-zA-Z]");
             string mobileNumber = GetValidInput("Enter your mobile number", "^[0-9]{10}$");
-            string fileName = path + name + mobileNumber+".txt";
+            string fileName = path + name + mobileNumber + ".txt";
             if (File.Exists(fileName))
             {
                 Student student = JsonConvert.DeserializeObject<Student>(File.ReadAllText(fileName));
@@ -151,15 +151,12 @@ namespace FileHandlingAssignment
         {
             if (File.Exists(path + "info.txt"))
             {
-                string[] files = File.ReadAllLines(path + "info.txt");
-                foreach(string file in files)
+                string[] files = Directory.GetFiles(path);
+                foreach (string file in files)
                 {
-                    string[] values = file.Split(',');
-                    values[1]=values[1].Replace("\"", string.Empty);
-                    string filePath = values[1].Substring(9, values[1].Length - 10);
-                    if(File.Exists(filePath))
+                    if (file != path + "log.txt" && file != path + "info.txt" && File.Exists(file))
                     {
-                        PrintStudent(JsonConvert.DeserializeObject<Student>(File.ReadAllText(filePath)));
+                        PrintStudent(JsonConvert.DeserializeObject<Student>(File.ReadAllText(file)));
                     }
                 }
             }
@@ -174,19 +171,46 @@ namespace FileHandlingAssignment
         {
             Console.WriteLine("First Name: " + student.FirstName);
             Console.WriteLine("Last Name: " + student.LastName);
-            Console.WriteLine("Mobile number: "+ student.EmailId);
+            Console.WriteLine("Mobile number: " + student.EmailId);
             Console.WriteLine("Address: " + student.MailingAddress);
             Console.WriteLine("Date of birth: " + student.DateOfBirth);
             Console.WriteLine("Course: " + student.Course);
             Console.WriteLine("Mentor name: " + student.MentorName);
             Console.WriteLine("Emergency number: " + student.EmergencyNumber);
+            Console.WriteLine("--------------------------------------------");
         }
 
         public void UpdateStudent()
         {
+            string name = GetValidInput("Enter first name", "^[a-zA-Z]");
+            string mobileNumber = GetValidInput("Enter your mobile number", "^[0-9]{10}$");
+            string fileName = path + name + mobileNumber + ".txt";
+            if (File.Exists(fileName))
+            {
+                Student student = JsonConvert.DeserializeObject<Student>(File.ReadAllText(fileName));
+                Console.WriteLine("Enter new details");
+                try
+                {
+                    student.FirstName = GetValidInput("Enter first name", "^[a-zA-Z]");
+                    student.LastName = GetValidInput("Enter last name", "[a-zA-Z]$");
+                    student.MobileNumber = GetValidInput("Enter mobile number", "^[0-9]{10}$");
+                    student.EmailId = GetValidInput("Enter email id", @"^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,3}$");
+                    student.MailingAddress = reader.Read("Enter address");
+                    student.DateOfBirth = GetValidInput("Enter DOB", "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$");
+                    student.Course = reader.Read("Enter the course you are pursuing");
+                    student.MentorName = GetValidInput("Enter mentors name", "^[a-zA-Z]+ [a-zA-Z]+$");
+                    student.EmergencyNumber = GetValidInput("Enter emergency number", "^[0-9]{10}$");
+                    File.WriteAllText(fileName, student.ToString());
+                    Logger.AddLog("New update request succeeded " + DateTime.UtcNow.ToString() + "for name: " + name + "for mobile number: " + mobileNumber);
+                }
+                catch (Exception exception)
+                {
+                    Logger.AddLog(DateTime.UtcNow.ToString() + " " + exception.ToString());
+                }
+            }
+            else Console.WriteLine("No such file exists");
+            Logger.AddLog("New update request failed " + DateTime.UtcNow.ToString() + "for name: " + name +"for mobile number: "+mobileNumber );
 
         }
-
-
     }
 }
