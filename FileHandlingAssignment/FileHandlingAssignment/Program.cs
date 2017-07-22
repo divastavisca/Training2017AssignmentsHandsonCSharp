@@ -10,31 +10,40 @@ namespace FileHandlingAssignment
 {
     class Program
     {
+
+        /// <summary>
+        /// Manages all student management tasks
+        /// </summary>
         static StudentDataManager manager = new StudentDataManager();
+
+        /// <summary>
+        /// Main executing thread
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             while(true)
             {
-                Menu();
+                Menu(); //Menu to print application choices
                 int choice;
                 if (!Int32.TryParse(Console.ReadLine(), out choice))
                     continue;
                 switch(choice)
                 {
                     case 1:
-                        manager.AddStudent();
+                        manager.AddStudent();   //Add a student
                         break;
-                    case 2:
-                        manager.ViewStudent();
+                    case 2: 
+                        manager.ViewStudent();  //View a student
                         break;
                     case 3:
-                        manager.Students();
+                        manager.Students();     //View all students
                         break;
                     case 4:
-                        manager.UpdateStudent();
+                        manager.UpdateStudent();  //Update existing student details
                         break;
                     case 5:
-                        Environment.Exit(1);
+                        Environment.Exit(1);       //exit
                         break;
                     default:
                         Console.WriteLine("Invalid input");
@@ -43,6 +52,9 @@ namespace FileHandlingAssignment
             }
         }
 
+        /// <summary>
+        /// Print main menu
+        /// </summary>
         static void Menu()
         {
             Console.WriteLine("Enter your choice\n");

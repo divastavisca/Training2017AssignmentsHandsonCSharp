@@ -94,7 +94,7 @@ namespace FileHandlingAssignment
             while (true)
             {
                 value = reader.Read(statement);
-                if (Regex.IsMatch(value, regEx))
+                if (Regex.IsMatch(value, regEx))  //regular expression check
                     break;
                 else Console.WriteLine("Invalid Input");
             }
@@ -108,7 +108,9 @@ namespace FileHandlingAssignment
         public Student GetStudent()
         {
             Student newStudent = new Student();
-            try
+            //Get valid input from console using regular expression validation
+           #region
+            try    
             {
                 newStudent.FirstName = GetValidInput("Enter first name", "^[a-zA-Z]");
                 newStudent.LastName = GetValidInput("Enter last name", "[a-zA-Z]$");
@@ -124,17 +126,46 @@ namespace FileHandlingAssignment
             {
                 Logger.AddLog(DateTime.UtcNow.ToString() + " " + exception.ToString());
             }
-            return newStudent;
+            #endregion
+            return newStudent;      //return valid student details
         }
 
+        /// <summary>
+        /// View a specific student info
+        /// </summary>
         public void ViewStudent()
         {
-
+            string name = GetValidInput("Enter first name", "^[a-zA-Z]");
+            string mobileNumber = GetValidInput("Enter your mobile number", "^[0-9]{10}$");
+            string fileName = path + name + mobileNumber+".txt";
+            if (File.Exists(fileName))
+            {
+                Student student = JsonConvert.DeserializeObject<Student>(File.ReadAllText(fileName));
+                PrintStudent(student);
+                Console.ReadKey();
+            }
+            else Console.WriteLine("No such student exists");
         }
 
         public void Students()
         {
 
+        }
+
+        /// <summary>
+        /// Print student details
+        /// </summary>
+        /// <param name="student"></param>
+        public void PrintStudent(Student student)
+        {
+            Console.WriteLine("First Name: " + student.FirstName);
+            Console.WriteLine("Last Name: " + student.LastName);
+            Console.WriteLine("Mobile number: "+ student.EmailId);
+            Console.WriteLine("Address: " + student.MailingAddress);
+            Console.WriteLine("Date of birth: " + student.DateOfBirth);
+            Console.WriteLine("Course: " + student.Course);
+            Console.WriteLine("Mentor name: " + student.MentorName);
+            Console.WriteLine("Emergency number: " + student.EmergencyNumber);
         }
 
         public void UpdateStudent()
