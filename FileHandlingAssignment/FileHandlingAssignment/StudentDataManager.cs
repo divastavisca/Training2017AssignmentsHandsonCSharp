@@ -149,7 +149,21 @@ namespace FileHandlingAssignment
 
         public void Students()
         {
-
+            if (File.Exists(path + "info.txt"))
+            {
+                string[] files = File.ReadAllLines(path + "info.txt");
+                foreach(string file in files)
+                {
+                    string[] values = file.Split(',');
+                    values[1]=values[1].Replace("\"", string.Empty);
+                    string filePath = values[1].Substring(9, values[1].Length - 10);
+                    if(File.Exists(filePath))
+                    {
+                        PrintStudent(JsonConvert.DeserializeObject<Student>(File.ReadAllText(filePath)));
+                    }
+                }
+            }
+            else Console.WriteLine("No data found!");
         }
 
         /// <summary>
