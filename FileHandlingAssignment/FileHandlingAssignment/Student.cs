@@ -8,9 +8,8 @@ using Newtonsoft.Json;
 
 namespace FileHandlingAssignment
 {
-    public class Student
+    public class Student 
     {
-
         /// <summary>
         /// First name of person
         /// </summary>

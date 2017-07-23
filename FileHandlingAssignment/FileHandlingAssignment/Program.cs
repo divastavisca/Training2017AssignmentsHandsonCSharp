@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace FileHandlingAssignment
 {
-    class Program
+    public class Program
     {
 
         /// <summary>

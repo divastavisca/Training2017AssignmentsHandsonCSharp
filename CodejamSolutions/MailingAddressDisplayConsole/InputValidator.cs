@@ -23,9 +23,9 @@ namespace MailingAddressDisplayConsole
             int pnCode = 0;
             newUser.FirstName = GetInputString("Enter your first name");  //set firstname
             newUser.LastName = GetInputString("Enter your last name");    //set lastname
-            newUser.MailingAddress.SetHouseNumber(newScanner.Read("Enter your house number"));   //Get House no
-            newUser.MailingAddress.SetStreet(GetInputString("Enter street"));   //set street
-            newUser.MailingAddress.SetCity(GetInputString("Enter City"));     //set city
+            newUser.MailingAddress.HouseNumber=newScanner.Read("Enter your house number");   //Get House no
+            newUser.MailingAddress.Street=GetInputString("Enter street");   //set street
+            newUser.MailingAddress.City=GetInputString("Enter City");     //set city
             brk = true;
             while (brk)  //Get pincode from console until gets a valid input
             {
@@ -34,7 +34,7 @@ namespace MailingAddressDisplayConsole
                 if (brk)
                     Console.WriteLine("Invalid");
             }
-            newUser.MailingAddress.SetPinCode(pnCode);   //set pincode
+            newUser.MailingAddress.PinCode=pnCode;   //set pincode
             return newUser;
         }
 
