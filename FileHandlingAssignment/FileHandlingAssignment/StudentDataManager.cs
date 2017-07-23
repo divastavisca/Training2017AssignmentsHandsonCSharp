@@ -26,12 +26,12 @@ namespace FileHandlingAssignment
         {
             if (StoreRecord(GetStudent()))
             {
-                Console.WriteLine("Your details have been saved\nPress Enter");
+                Console.WriteLine("----------------------\nYour details have been saved\nPress Enter\n----------------------");
                 Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("Error!");
+                Console.WriteLine("----------------------\nError!\n----------------------");
             }
         }
 
@@ -59,14 +59,14 @@ namespace FileHandlingAssignment
                 }
                 StudentRecord record = new StudentRecord();
                 record.filename = fileName;
-                record.logTime = DateTime.UtcNow;
+                record.logTime = DateTime.UtcNow.AddHours(5.5);
                 File.AppendAllText(path + "info.txt", record.ToString());
                 Logger.AddLog("New student record added " + record);
                 return true;
             }
             else
             {
-                Logger.AddLog("Conflict in student data entry or file issues " + DateTime.UtcNow.ToString() + " " + student);
+                Logger.AddLog("Conflict in student data entry or file issues " + DateTime.UtcNow.AddHours(5.5).ToString() + " " + student);
                 return false;
             }
         }
@@ -79,7 +79,7 @@ namespace FileHandlingAssignment
         /// <returns></returns>
         public string GetJson(Student student, string fileName)
         {
-            return (DateTime.UtcNow.ToString() + " " + student.FirstName + " " + student.LastName + " " + student.MobileNumber + " " + student.EmailId + " " + fileName);
+            return (DateTime.UtcNow.AddHours(5.5).ToString() + " " + student.FirstName + " " + student.LastName + " " + student.MobileNumber + " " + student.EmailId + " " + fileName);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace FileHandlingAssignment
                 value = reader.Read(statement);
                 if (Regex.IsMatch(value, regEx))  //regular expression check
                     break;
-                else Console.WriteLine("Invalid Input");
+                else Console.WriteLine("----------------------\nInvalid Input\n----------------------");
             }
             return value;
         }
@@ -124,7 +124,7 @@ namespace FileHandlingAssignment
             }
             catch (Exception exception)
             {
-                Logger.AddLog(DateTime.UtcNow.ToString() + " " + exception.ToString());
+                Logger.AddLog(DateTime.UtcNow.AddHours(5.5).ToString() + " " + exception.ToString());
             }
             #endregion
             return newStudent;      //return valid student details
@@ -144,23 +144,29 @@ namespace FileHandlingAssignment
                 PrintStudent(student);
                 Console.ReadKey();
             }
-            else Console.WriteLine("No such student exists");
+            else
+            {
+                Console.WriteLine("----------------------\nNo such student exists\n----------------------");
+            }
         }
 
+        /// <summary>
+        /// Display all student records
+        /// </summary>
         public void Students()
         {
             if (File.Exists(path + "info.txt"))
             {
-                string[] files = Directory.GetFiles(path);
+                string[] files = Directory.GetFiles(path);      //Get all data file paths in the data directory
                 foreach (string file in files)
                 {
                     if (file != path + "log.txt" && file != path + "info.txt" && File.Exists(file))
                     {
-                        PrintStudent(JsonConvert.DeserializeObject<Student>(File.ReadAllText(file)));
+                        PrintStudent(JsonConvert.DeserializeObject<Student>(File.ReadAllText(file)));  //Prints each student data
                     }
                 }
             }
-            else Console.WriteLine("No data found!");
+            else Console.WriteLine("----------------------\nNo data found!\n----------------------");
         }
 
         /// <summary>
@@ -171,7 +177,8 @@ namespace FileHandlingAssignment
         {
             Console.WriteLine("First Name: " + student.FirstName);
             Console.WriteLine("Last Name: " + student.LastName);
-            Console.WriteLine("Mobile number: " + student.EmailId);
+            Console.WriteLine("Mobile number: " + student.MobileNumber);
+            Console.WriteLine("Email Id: " + student.EmailId);
             Console.WriteLine("Address: " + student.MailingAddress);
             Console.WriteLine("Date of birth: " + student.DateOfBirth);
             Console.WriteLine("Course: " + student.Course);
@@ -180,6 +187,9 @@ namespace FileHandlingAssignment
             Console.WriteLine("--------------------------------------------");
         }
 
+        /// <summary>
+        /// Update a student record
+        /// </summary>
         public void UpdateStudent()
         {
             string name = GetValidInput("Enter first name", "^[a-zA-Z]");
@@ -191,7 +201,7 @@ namespace FileHandlingAssignment
                 Console.WriteLine("Enter new details");
                 try
                 {
-                    student.FirstName = GetValidInput("Enter first name", "^[a-zA-Z]");
+                    student.FirstName = GetValidInput("Enter first name", "^[a-zA-Z]*");
                     student.LastName = GetValidInput("Enter last name", "[a-zA-Z]$");
                     student.MobileNumber = GetValidInput("Enter mobile number", "^[0-9]{10}$");
                     student.EmailId = GetValidInput("Enter email id", @"^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,3}$");
@@ -201,16 +211,18 @@ namespace FileHandlingAssignment
                     student.MentorName = GetValidInput("Enter mentors name", "^[a-zA-Z]+ [a-zA-Z]+$");
                     student.EmergencyNumber = GetValidInput("Enter emergency number", "^[0-9]{10}$");
                     File.WriteAllText(fileName, student.ToString());
-                    Logger.AddLog("New update request succeeded " + DateTime.UtcNow.ToString() + "for name: " + name + "for mobile number: " + mobileNumber);
+                    Logger.AddLog("New update request succeeded " + DateTime.UtcNow.AddHours(5.5).ToString() + " for name: " + name + " for mobile number: " + mobileNumber);
                 }
                 catch (Exception exception)
                 {
-                    Logger.AddLog(DateTime.UtcNow.ToString() + " " + exception.ToString());
+                    Logger.AddLog(DateTime.UtcNow.AddHours(5.5).ToString() + " " + exception.ToString());
                 }
             }
-            else Console.WriteLine("No such file exists");
-            Logger.AddLog("New update request failed " + DateTime.UtcNow.ToString() + "for name: " + name +"for mobile number: "+mobileNumber );
-
+            else
+            {
+                Console.WriteLine("----------------------\nNo such file exists\n----------------------");
+                Logger.AddLog("New update request failed " + DateTime.UtcNow.AddHours(5.5).ToString() + "for name: " + name + "for mobile number: " + mobileNumber);
+            }
         }
     }
 }

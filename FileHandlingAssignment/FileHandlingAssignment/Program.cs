@@ -22,7 +22,8 @@ namespace FileHandlingAssignment
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            while(true)
+            CreateDirectory();
+            while (true)
             {
                 Menu(); //Menu to print application choices
                 int choice;
@@ -65,6 +66,13 @@ namespace FileHandlingAssignment
             Console.WriteLine("5)Exit");
         }
 
-       
+        /// <summary>
+        /// Creates the data directory if not exists
+        /// </summary>
+        static void CreateDirectory()
+        {
+            if (!Directory.Exists("D:/StudentInfoConsole"))
+                Directory.CreateDirectory("D:/StudentInfoConsole");
+        }
     }
 }
