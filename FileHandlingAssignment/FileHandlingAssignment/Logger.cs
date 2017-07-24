@@ -18,7 +18,7 @@ namespace FileHandlingAssignment
 
                 }
             }
-            File.AppendAllText("D:/StudentInfoConsole/log.txt","\n"+  DateTime.UtcNow.AddHours(5.5).ToString()+" " + log);
+            File.AppendAllText("D:/StudentInfoConsole/log.txt", "\n"+DateTime.UtcNow.AddHours(5.5).ToString() + " " + log);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace FileHandlingAssignment
             }
             else
             {
-                Console.WriteLine("----------------------\nError!\n----------------------");
+                Console.ReadKey();
             }
         }
 
@@ -42,9 +42,9 @@ namespace FileHandlingAssignment
         /// <returns></returns>
         public bool StoreRecord(Student student)
         {
-            string fileName = path + student.FirstName + student.MobileNumber + ".txt";
-            if (!File.Exists(fileName))
+            if (student!=null)
             {
+                string fileName = path + student.FirstName + student.MobileNumber + ".txt";
                 using (File.Create(fileName))
                 {
 
@@ -66,7 +66,7 @@ namespace FileHandlingAssignment
             }
             else
             {
-                Logger.AddLog("Conflict in student data entry or file issues " + DateTime.UtcNow.AddHours(5.5).ToString() + " " + student);
+                Logger.AddLog("Conflict in student data entry or file issues  " + student);
                 return false;
             }
         }
@@ -115,16 +115,24 @@ namespace FileHandlingAssignment
                 newStudent.FirstName = GetValidInput("Enter first name", "^[a-zA-Z]");
                 newStudent.LastName = GetValidInput("Enter last name", "[a-zA-Z]$");
                 newStudent.MobileNumber = GetValidInput("Enter mobile number", "^[0-9]{10}$");
-                newStudent.EmailId = GetValidInput("Enter email id", @"^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,3}$");
-                newStudent.MailingAddress = reader.Read("Enter address");
-                newStudent.DateOfBirth = GetValidInput("Enter DOB", "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$");
-                newStudent.Course = reader.Read("Enter the course you are pursuing");
-                newStudent.MentorName = GetValidInput("Enter mentors name", "^[a-zA-Z]+ [a-zA-Z]+$");
-                newStudent.EmergencyNumber = GetValidInput("Enter emergency number", "^[0-9]{10}$");
+                if (!File.Exists(path + newStudent.FirstName + newStudent.MobileNumber + ".txt"))
+                {
+                    newStudent.EmailId = GetValidInput("Enter email id", @"^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-z]{2,3}$");
+                    newStudent.MailingAddress = reader.Read("Enter address");
+                    newStudent.DateOfBirth = GetValidInput("Enter DOB", "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$");
+                    newStudent.Course = reader.Read("Enter the course you are pursuing");
+                    newStudent.MentorName = GetValidInput("Enter mentors name", "^[a-zA-Z]+ [a-zA-Z]+$");
+                    newStudent.EmergencyNumber = GetValidInput("Enter emergency number", "^[0-9]{10}$");
+                }
+                else
+                {
+                    Console.WriteLine("This student already exists");
+                    return null;
+                }
             }
             catch (Exception exception)
             {
-                Logger.AddLog(DateTime.UtcNow.AddHours(5.5).ToString() + " " + exception.ToString());
+                Logger.AddLog(" " + exception.ToString());
             }
             #endregion
             return newStudent;      //return valid student details
@@ -215,13 +223,13 @@ namespace FileHandlingAssignment
                 }
                 catch (Exception exception)
                 {
-                    Logger.AddLog(DateTime.UtcNow.AddHours(5.5).ToString() + " " + exception.ToString());
+                    Logger.AddLog("Exception occured "+exception.ToString());
                 }
             }
             else
             {
                 Console.WriteLine("----------------------\nNo such file exists\n----------------------");
-                Logger.AddLog("New update request failed " + DateTime.UtcNow.AddHours(5.5).ToString() + "for name: " + name + "for mobile number: " + mobileNumber);
+                Logger.AddLog("New update request failed for name: " + name + " for mobile number: " + mobileNumber);
             }
         }
     }
